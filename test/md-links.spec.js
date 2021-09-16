@@ -1,4 +1,6 @@
-const { pathExists, isAbsolute, relToAbs, isDirectory } = require('../index');
+const {
+  pathExists, isAbsolute, relToAbs, isDirectory,
+} = require('../index');
 
 describe('pathExists', () => {
   it('la ruta no existe', () => {
