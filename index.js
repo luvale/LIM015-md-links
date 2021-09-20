@@ -21,6 +21,21 @@ const isMd = (p) => {
 const practice = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/prueba';
 isMd(practice);
 
+/*
+fs.readdir(practice, (err, files) => {
+  if (err) {
+    console.log(err);
+  } else {
+    files.forEach((file) => {
+      console.log(file);
+    });
+  }
+});
+*/
+
+console.log(fs.readdirSync(practice));
+// console.log(fs.readFileSync(practice));
+
 module.exports = {
   pathExists,
   isAbsolute,
