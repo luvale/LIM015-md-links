@@ -10,15 +10,17 @@ const relToAbs = (p) => path.resolve(p);
 
 const isDirectory = (p) => fs.statSync(p).isDirectory();
 
-// const practice = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/test';
+const isMd = (p) => path.extname(p) === '.md';
 
-// console.log(relToAbs(practice));
+const practice = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/README.md';
+console.log(isMd(practice));
 
 module.exports = {
   pathExists,
   isAbsolute,
   relToAbs,
   isDirectory,
+  isMd,
 };
 
 /*
