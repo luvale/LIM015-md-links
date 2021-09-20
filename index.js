@@ -10,9 +10,16 @@ const relToAbs = (p) => path.resolve(p);
 
 const isDirectory = (p) => fs.statSync(p).isDirectory();
 
-// const practice = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/test';
+const isMd = (p) => {
+  if (path.extname(p) === '.md') {
+    console.log(true);
+  } else {
+    console.log(false);
+  }
+};
 
-// console.log(relToAbs(practice));
+const practice = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/prueba';
+isMd(practice);
 
 module.exports = {
   pathExists,
