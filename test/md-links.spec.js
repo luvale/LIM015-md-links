@@ -1,5 +1,5 @@
 const {
-  pathExists, isAbsolute, relToAbs, isDirectory,
+  pathExists, isAbsolute, relToAbs, isDirectory, isMd,
 } = require('../index');
 
 describe('pathExists', () => {
@@ -27,6 +27,13 @@ describe('isDirectory', () => {
   it('es un directorio', () => {
     const path = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/test';
     expect(isDirectory(path)).toBe(true);
+  });
+});
+
+describe('isMd', () => {
+  it('el archivo es md', () => {
+    const path = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/.eslintrc.js';
+    expect(isMd(path)).toBe(false);
   });
 });
 
