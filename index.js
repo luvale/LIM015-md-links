@@ -17,13 +17,20 @@ const practice = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/prueba';
 
 const mdInDir = (p) => {
   const readDir = fs.readdirSync(p);
+  const mdArray = [];
   for (let i = 0; i < readDir.length; i++) {
+    readDir[i] = relToAbs(readDir[i])
+    console.log(readDir[i]);
     // console.log(readDir[i], isMd(readDir[i]));
     if (isMd(readDir[i])) {
-      console.log(readDir[i]);
+      mdArray.push(readDir[i]);
     }
+    /*
+    if(isDirectory((readDir[i]))) {
+      console.log(readDir[i])
+    }*/
   } 
-  return readDir;
+  return mdArray;
 };
 
 console.log(mdInDir(practice));
