@@ -12,8 +12,22 @@ const isDirectory = (p) => fs.statSync(p).isDirectory();
 
 const isMd = (p) => path.extname(p) === '.md';
 
-const practice = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/README.md';
-console.log(isMd(practice));
+const practice = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/prueba';
+// console.log(isMd(practice));
+
+const mdInDir = (p) => {
+  const readDir = fs.readdirSync(p);
+  for (let i = 0; i < readDir.length; i++) {
+    // console.log(readDir[i], isMd(readDir[i]));
+    if (isMd(readDir[i])) {
+      console.log(readDir[i]);
+    }
+  } 
+  return readDir;
+};
+
+console.log(mdInDir(practice));
+
 
 module.exports = {
   pathExists,
