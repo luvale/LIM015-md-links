@@ -13,7 +13,6 @@ const isDirectory = (p) => fs.statSync(p).isDirectory();
 const isMd = (p) => path.extname(p) === '.md';
 
 const practice = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz';
-// console.log(isDirectory(practice));
 
 const mdInDir = (p) => {
   let mdArray = [];
@@ -35,13 +34,13 @@ const mdInDir = (p) => {
 
 console.log(mdInDir(practice));
 
-
 module.exports = {
   pathExists,
   isAbsolute,
   relToAbs,
   isDirectory,
   isMd,
+  mdInDir,
 };
 
 /*

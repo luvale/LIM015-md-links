@@ -1,5 +1,5 @@
 const {
-  pathExists, isAbsolute, relToAbs, isDirectory, isMd,
+  pathExists, isAbsolute, relToAbs, isDirectory, isMd, mdInDir,
 } = require('../index');
 
 describe('pathExists', () => {
@@ -30,10 +30,25 @@ describe('isDirectory', () => {
   });
 });
 
+
 describe('isMd', () => {
   it('el archivo es md', () => {
     const path = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/.eslintrc.js';
     expect(isMd(path)).toBe(false);
+  });
+});
+
+describe('mdInDir', () => {
+  it('el directorio NO contiene archivos md', () => {
+    const path = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/test';
+    expect(mdInDir(path)).toEqual([]);
+  });
+  it('el directorio SÍ contiene archivos md', () => {
+    const path = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz';
+    expect(mdInDir(path)).toEqual(
+      ['/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/otraCarpeta/nopuedeser.md', 
+      '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/otraCarpeta/selogró.md',
+      '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md']);
   });
 });
 
