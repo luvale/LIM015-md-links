@@ -33,10 +33,19 @@ const mdInDir = (p) => {
 const practice = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md';
 
 const getLinks = (p) => {
+  const obj = [];
   const fileContent = fs.readFileSync(p, 'utf-8');
   const regexLinkNText = /\[(\w.+)\]\((https):\/\/[^ "]\S+\)/g;
   const LinkNText = fileContent.match(regexLinkNText);
-  return LinkNText;
+  LinkNText.forEach((linkNText) => {
+    obj.push({
+      href: linkNText.split('](')[1].slice(0,-1),
+      text: linkNText.split('](')[0].slice(1),
+      file: p
+      });
+    }
+    );
+  return obj;
 };
 
 console.log(getLinks(practice));
