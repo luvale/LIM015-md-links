@@ -5,5 +5,7 @@ construido con el [motor de JavaScript V8 de Chrome](https://developers.google.c
 Esto  nos va a permitir ejecutar JavaScript en el entorno del sistema operativo,
 ya sea tu máquina o un servidor, lo cual nos abre las puertas para poder
 interactuar con el sistema en sí, archivos, redes, ...
-- [ ] checklist
 - [1. Preámbulo](#1-preámbulo)
+
+- [x] Checklist
+- [ ] Checklist
