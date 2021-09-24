@@ -1,5 +1,5 @@
 const {
-  pathExists, isAbsolute, relToAbs, isDirectory, isMd, mdInDir,
+  pathExists, isAbsolute, relToAbs, isDirectory, isMd, mdInDir, getLinks
 } = require('../index');
 
 describe('pathExists', () => {
@@ -52,6 +52,27 @@ describe('mdInDir', () => {
   });
 });
 
+describe('getLinks', () => {
+  it('No contiene links', () => {
+    const path = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/otraCarpeta/nopuedeser.md';
+    expect(getLinks(path)).toEqual([]);
+  });
+  it('Contiene links', () => {
+    const path = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md';
+    expect(getLinks(path)).toEqual([
+      {
+        href: 'https://es.wikipedia.org/wiki/Markdown',
+        text: 'Markdown',
+        file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md'
+      },
+      {
+        href: 'https://nodejs.org/es/',
+        text: 'Node.js',
+        file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md'
+      },
+    ]);
+  });
+});
 /* const mdLinks = require('../index.js');
 
 describe('mdLinks', () => {

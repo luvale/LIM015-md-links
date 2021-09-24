@@ -49,8 +49,6 @@ const getLinks = (p) => {
   return obj;
 };
 
-console.log(getLinks(practice));
-
 module.exports = {
   pathExists,
   isAbsolute,
@@ -58,6 +56,7 @@ module.exports = {
   isDirectory,
   isMd,
   mdInDir,
+  getLinks
 };
 
 /*
