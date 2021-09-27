@@ -15,7 +15,9 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luvale/LIM015-md-links.git"
