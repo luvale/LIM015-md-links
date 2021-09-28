@@ -1,5 +1,5 @@
 const {
-  pathExists, isAbsolute, relToAbs, isDirectory, isMd, mdInDir, getLinks
+  pathExists, isAbsolute, relToAbs, isDirectory, isMd, mdInDir, getLinks, linkStatus
 } = require('../index');
 
 describe('pathExists', () => {
@@ -73,13 +73,18 @@ describe('getLinks', () => {
     ]);
   });
 });
-/* const mdLinks = require('../index.js');
 
-describe('mdLinks', () => {
-
-  it('should...', () => {
-    console.log('FIX ME!');
+describe('linkStatus', () => {
+  const obj = {
+    href: 'https://es.wikipedia.org/wiki/Markdown',
+    text: 'Markdown',
+    file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
+  };
+  it('el link está ok', () => linkStatus(obj).then({
+      href: 'https://es.wikipedia.org/wiki/Markdown',
+      text: 'Markdown',
+      file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
+      status: 200,
+      message: 'ok',
+    }))
   });
-
-});
-*/

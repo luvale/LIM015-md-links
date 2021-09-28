@@ -75,7 +75,7 @@ const linkStatus = (obj) => {
   .catch((error) => console.log(error))
 };
 
-console.log(linkStatus(obj).then((response) => console.log(response)));
+// console.log(linkStatus(obj).then((response) => console.log(response)));
 
 module.exports = {
   pathExists,
@@ -85,10 +85,5 @@ module.exports = {
   isMd,
   mdInDir,
   getLinks,
+  linkStatus,
 };
-
-/*
-module.exports = () => {
-// ...
-};
-*/
