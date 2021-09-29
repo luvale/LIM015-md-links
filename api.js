@@ -47,13 +47,11 @@ const getLinks = (p) => {
   }
   return obj;
 };
+const prueba = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md';
+// console.log(getLinks(prueba));
 
-// const practice = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/otraCarpeta/nopuedeser.md';
-
-const ok = 'https://github.com/luvale/LIM015-md-links';
-const fail = 'https://github.com/luvale/LIM015-md-link';
 const obj = {
-  href: 'https://es.wikipedia.org/wiki/Markdow',
+  href: 'https://es.wikdia.org/wiki/Markdown',
   text: 'Markdown',
   file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md'
 };
@@ -72,7 +70,7 @@ const linkStatus = (obj) => {
       })
       return response;
   })
-  .catch((error) => console.log(error))
+  .catch((error) => console.error('ERROR:', error.message));
 };
 
 // console.log(linkStatus(obj).then((response) => console.log(response)));
