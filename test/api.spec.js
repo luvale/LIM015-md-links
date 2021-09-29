@@ -66,8 +66,8 @@ describe('getLinks', () => {
         file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md'
       },
       {
-        href: 'https://nodejs.org/es/',
-        text: 'Node.js',
+        href: 'https://www.google.com/colores',
+        text: 'Colores - link roto',
         file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md'
       },
     ]);
@@ -86,23 +86,36 @@ const response = [{
   status: 200,
   message: 'ok'
 }];
-
+const responseFail = [{
+  href: 'https://es.wikipedia.org/wiki/Markdown',
+  text: 'Markdown',
+  file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
+  status: 500,
+  message: 'fail'
+}];
 const objFail = {
   href: 'https://es.wikdia.org/wiki/Markdown',
   text: 'Markdown',
   file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
 };
+
 describe('linkStatus', () => {
-  it('El link me odia', () => {
-    fetch.mockResolvedValue(objOk);
+  it('El link está ok', () => {
+    fetch.mockResolvedValue({ status: 200 });
     return linkStatus(objOk)
     .then((res) => {
+      // console.log(res[0].message);
       expect(res).toEqual(response);
     })})
-  /*it('Error', () => {
-    fetch.mockResolvedValue(objOk);
+    it('El link está ok', () => {
+      fetch.mockResolvedValue({ status: 500 });
+      return linkStatus(objOk)
+      .then((res) => {
+        expect(res).toEqual(responseFail);
+      })})
+  it('Error', () => {
+    fetch.mockRejectedValue(new Error('ERROR: request to https://es.wikdia.org/wiki/Markdown failed, reason: getaddrinfo ENOTFOUND es.wikdia.org'));
     return linkStatus(objFail).catch((err) => {
     expect(err).toBe('ERROR: request to https://es.wikdia.org/wiki/Markdown failed, reason: getaddrinfo ENOTFOUND es.wikdia.org')
-    console.log(err);
-  })});*/
+  })});
 });

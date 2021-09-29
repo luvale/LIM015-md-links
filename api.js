@@ -31,6 +31,9 @@ const mdInDir = (p) => {
   return mdArray;
 };
 
+const dirPrueba = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz';
+// console.log(mdInDir(dirPrueba));
+
 const getLinks = (p) => {
   const obj = [];
   const fileContent = fs.readFileSync(p, 'utf-8');
@@ -47,14 +50,8 @@ const getLinks = (p) => {
   }
   return obj;
 };
-const prueba = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md';
-// console.log(getLinks(prueba));
-
-const obj = {
-  href: 'https://es.wikdia.org/wiki/Markdown',
-  text: 'Markdown',
-  file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md'
-};
+const mdPrueba = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md';
+// console.log(getLinks(mdPrueba));
 
 const linkStatus = (obj) => {
   const response = [];
@@ -66,14 +63,19 @@ const linkStatus = (obj) => {
         text: obj.text,
         file: obj.file,
         status: res.status,
-        message: res.ok ? 'ok' : 'fail', // res.status >= 200 && res.status < 300
+        message: res.status >= 200 && res.status < 300 ? 'ok' : 'fail',
       })
       return response;
   })
   .catch((error) => console.error('ERROR:', error.message));
 };
+const objPrueba = {
+  href: 'https://www.google.com/colores',
+  text: 'Colores - link roto',
+  file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md'
+};
 
-// console.log(linkStatus(obj).then((response) => console.log(response)));
+// console.log(linkStatus(objPrueba).then((response) => console.log(response)));
 
 module.exports = {
   pathExists,
