@@ -1,6 +1,7 @@
+const fetch = require('../__mocks__/node-fetch.js');
 const {
   pathExists, isAbsolute, relToAbs, isDirectory, isMd, mdInDir, getLinks, linkStatus
-} = require('../index');
+} = require('../api');
 
 describe('pathExists', () => {
   it('la ruta no existe', () => {
@@ -29,7 +30,6 @@ describe('isDirectory', () => {
     expect(isDirectory(path)).toBe(true);
   });
 });
-
 
 describe('isMd', () => {
   it('el archivo es md', () => {
@@ -74,17 +74,35 @@ describe('getLinks', () => {
   });
 });
 
+const objOk = {
+  href: 'https://es.wikipedia.org/wiki/Markdown',
+  text: 'Markdown',
+  file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
+};
+const response = [{
+  href: 'https://es.wikipedia.org/wiki/Markdown',
+  text: 'Markdown',
+  file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
+  status: 200,
+  message: 'ok'
+}];
+
+const objFail = {
+  href: 'https://es.wikdia.org/wiki/Markdown',
+  text: 'Markdown',
+  file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
+};
 describe('linkStatus', () => {
-  const obj = {
-    href: 'https://es.wikipedia.org/wiki/Markdown',
-    text: 'Markdown',
-    file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
-  };
-  it('el link está ok', () => linkStatus(obj).then({
-      href: 'https://es.wikipedia.org/wiki/Markdown',
-      text: 'Markdown',
-      file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
-      status: 200,
-      message: 'ok',
-    }))
-  });
+  it('El link me odia', () => {
+    fetch.mockResolvedValue(objOk);
+    return linkStatus(objOk)
+    .then((res) => {
+      expect(res).toEqual(response);
+    })})
+  /*it('Error', () => {
+    fetch.mockResolvedValue(objOk);
+    return linkStatus(objFail).catch((err) => {
+    expect(err).toBe('ERROR: request to https://es.wikdia.org/wiki/Markdown failed, reason: getaddrinfo ENOTFOUND es.wikdia.org')
+    console.log(err);
+  })});*/
+});
