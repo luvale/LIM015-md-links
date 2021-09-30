@@ -1,10 +1,13 @@
-const { pathExists } = require('./api.js');
+const { pathExists, isAbsolute, relToAbs } = require('./api.js');
 
 const mdLinks = (path, options) => {
   return new Promise((resolve, reject) => {
     if (pathExists(path)) {
-      console.log('el path existe');
-    };
+      const absolutePath = isAbsolute(path) ? path : relToAbs(path);
+      console.log(absolutePath);
+    } else {
+      console.log('el path NO existe');
+    }
   })
 };
-console.log(mdLinks('/Users/luva/Laboratoria/Md Links/LIM015-md-links/api.js'));
+console.log(mdLinks('carpetaSinMd/túpuedes.js'));
