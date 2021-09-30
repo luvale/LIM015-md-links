@@ -1,7 +1,7 @@
 const fetch = require('../__mocks__/node-fetch.js');
 const {
   pathExists, isAbsolute, relToAbs, isDirectory, isMd, mdInDir, getLinks, linkStatus
-} = require('../api');
+} = require('../api.js');
 
 describe('pathExists', () => {
   it('la ruta no existe', () => {
@@ -90,7 +90,7 @@ const responseFail = [{
   href: 'https://es.wikipedia.org/wiki/Markdown',
   text: 'Markdown',
   file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
-  status: 500,
+  status: 404,
   message: 'fail'
 }];
 const objFail = {
@@ -108,7 +108,7 @@ describe('linkStatus', () => {
       expect(res).toEqual(response);
     })})
     it('El link está ok', () => {
-      fetch.mockResolvedValue({ status: 500 });
+      fetch.mockResolvedValue({ status: 404 });
       return linkStatus(objOk)
       .then((res) => {
         expect(res).toEqual(responseFail);
