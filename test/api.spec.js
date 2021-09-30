@@ -63,11 +63,11 @@ describe('getMd', () => {
 
 describe('getLinks', () => {
   it('Devuelve un array vacío si NO hay links', () => {
-    const path = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/otraCarpeta/nopuedeser.md';
+    const path = ['/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/otraCarpeta/nopuedeser.md'];
     expect(getLinks(path)).toEqual([]);
   });
   it('Devuelve en un array de objetos el href, text y file de los links', () => {
-    const path = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md';
+    const path = ['/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md'];
     expect(getLinks(path)).toEqual([
       {
         href: 'https://es.wikipedia.org/wiki/Markdown',
