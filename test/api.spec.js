@@ -1,7 +1,7 @@
-const fetch = require('../__mocks__/node-fetch.js');
+const fetch = require('../__mocks__/node-fetch');
 const {
   pathExists, isAbsolute, relToAbs, isDirectory, isMd, mdInDir, getLinks, linkStatus
-} = require('../api.js');
+} = require('../api');
 
 describe('pathExists', () => {
   it('la ruta no existe', () => {
@@ -46,9 +46,10 @@ describe('mdInDir', () => {
   it('el directorio SÍ contiene archivos md', () => {
     const path = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz';
     expect(mdInDir(path)).toEqual(
-      ['/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/otraCarpeta/nopuedeser.md', 
-      '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/otraCarpeta/selogró.md',
-      '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md']);
+      ['/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/otraCarpeta/nopuedeser.md',
+        '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/otraCarpeta/selogró.md',
+        '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md']
+    );
   });
 });
 
@@ -84,14 +85,14 @@ const response = [{
   text: 'Markdown',
   file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
   status: 200,
-  message: 'ok'
+  message: 'ok',
 }];
 const responseFail = [{
   href: 'https://es.wikipedia.org/wiki/Markdown',
   text: 'Markdown',
   file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
   status: 404,
-  message: 'fail'
+  message: 'fail',
 }];
 const objFail = {
   href: 'https://es.wikdia.org/wiki/Markdown',
@@ -103,19 +104,21 @@ describe('linkStatus', () => {
   it('El link está ok', () => {
     fetch.mockResolvedValue({ status: 200 });
     return linkStatus(objOk)
-    .then((res) => {
+      .then((res) => {
       // console.log(res[0].message);
-      expect(res).toEqual(response);
-    })})
-    it('El link está ok', () => {
-      fetch.mockResolvedValue({ status: 404 });
-      return linkStatus(objOk)
+        expect(res).toEqual(response);
+      })})
+  it('El link está ok', () => {
+    fetch.mockResolvedValue({ status: 404 });
+    return linkStatus(objOk)
       .then((res) => {
         expect(res).toEqual(responseFail);
-      })})
+      });
+  });
   it('Error', () => {
     fetch.mockRejectedValue(new Error('ERROR: request to https://es.wikdia.org/wiki/Markdown failed, reason: getaddrinfo ENOTFOUND es.wikdia.org'));
     return linkStatus(objFail).catch((err) => {
-    expect(err).toBe('ERROR: request to https://es.wikdia.org/wiki/Markdown failed, reason: getaddrinfo ENOTFOUND es.wikdia.org')
-  })});
+      expect(err).toBe('ERROR: request to https://es.wikdia.org/wiki/Markdown failed, reason: getaddrinfo ENOTFOUND es.wikdia.org')
+    });
+  });
 });

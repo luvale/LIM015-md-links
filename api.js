@@ -55,24 +55,23 @@ const mdPrueba = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/
 
 const linkStatus = (obj) => {
   const response = [];
-  return fetch(obj.href)
-  .then((res) => {
+  return fetch(obj.href).then((res) => {
     // console.log(res);
-       response.push({
-        href: obj.href,
-        text: obj.text,
-        file: obj.file,
-        status: res.status,
-        message: res.status >= 200 && res.status < 300 ? 'ok' : 'fail',
-      })
-      return response;
+    response.push({
+      href: obj.href,
+      text: obj.text,
+      file: obj.file,
+      status: res.status,
+      message: res.status >= 200 && res.status < 300 ? 'ok' : 'fail',
+    });
+    return response;
   })
-  .catch((error) => console.error('ERROR:', error.message));
+    .catch((error) => console.error('ERROR:', error.message));
 };
 const objPrueba = {
   href: 'https://www.google.com/colores',
   text: 'Colores - link roto',
-  file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md'
+  file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
 };
 
 // console.log(linkStatus(objPrueba).then((response) => console.log(response)));
