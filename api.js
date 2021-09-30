@@ -13,26 +13,27 @@ const isDirectory = (p) => fs.statSync(p).isDirectory();
 
 const isMd = (p) => path.extname(p) === '.md';
 
-const mdInDir = (p) => {
+const getMd = (p) => {
   let mdArray = [];
-  const readDir = fs.readdirSync(p);
-  // console.log(readDir);
-  for (let i = 0; i < readDir.length; i++) {
-    readDir[i] = path.join(p, '/', readDir[i]);
-    // console.log(readDir[i]);
-    // console.log(readDir[i], isMd(readDir[i]));
-    if (isMd(readDir[i])) {
-      mdArray.push(readDir[i]);
-    } else if (isDirectory((readDir[i]))) {
+  if (isDirectory(p)) {
+    const readDir = fs.readdirSync(p);
+    // console.log(readDir);
+    for (let i = 0; i < readDir.length; i++) {
+      readDir[i] = path.join(p, '/', readDir[i]);
+      // console.log(readDir[i]);
+      // console.log(readDir[i], isMd(readDir[i]));
+      if (isMd(readDir[i])) {
+        mdArray.push(readDir[i]);
+      } else if (isDirectory((readDir[i]))) {
       // console.log(mdInDir(readDir[i]));
-      mdArray = mdArray.concat(mdInDir(readDir[i]));
+        mdArray = mdArray.concat(getMd(readDir[i]));
+      }
     }
+  } else if (isMd(p)) {
+    mdArray.push(p);
   }
   return mdArray;
 };
-
-const dirPrueba = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz';
-// console.log(mdInDir(dirPrueba));
 
 const getLinks = (p) => {
   const obj = [];
@@ -55,24 +56,23 @@ const mdPrueba = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/
 
 const linkStatus = (obj) => {
   const response = [];
-  return fetch(obj.href)
-  .then((res) => {
+  return fetch(obj.href).then((res) => {
     // console.log(res);
-       response.push({
-        href: obj.href,
-        text: obj.text,
-        file: obj.file,
-        status: res.status,
-        message: res.status >= 200 && res.status < 300 ? 'ok' : 'fail',
-      })
-      return response;
+    response.push({
+      href: obj.href,
+      text: obj.text,
+      file: obj.file,
+      status: res.status,
+      message: res.status >= 200 && res.status < 300 ? 'ok' : 'fail',
+    });
+    return response;
   })
-  .catch((error) => console.error('ERROR:', error.message));
+    .catch((error) => console.log('ERROR:', error.message));
 };
 const objPrueba = {
   href: 'https://www.google.com/colores',
   text: 'Colores - link roto',
-  file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md'
+  file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
 };
 
 // console.log(linkStatus(objPrueba).then((response) => console.log(response)));
@@ -83,7 +83,7 @@ module.exports = {
   relToAbs,
   isDirectory,
   isMd,
-  mdInDir,
+  getMd,
   getLinks,
   linkStatus,
 };
