@@ -35,24 +35,24 @@ const getMd = (p) => {
   return mdArray;
 };
 
-const getLinks = (p) => {
+const getLinks = (array) => {
   const obj = [];
-  const fileContent = fs.readFileSync(p, 'utf-8');
-  const regexLinkNText = /\[(\w.+)\]\((https):\/\/[^ "]\S+\)/g;
-  const LinkNText = fileContent.match(regexLinkNText);
-  if (LinkNText !== null) {
-    LinkNText.forEach((linkNText) => {
-      obj.push({
-        href: linkNText.split('](')[1].slice(0, -1),
-        text: linkNText.split('](')[0].slice(1),
-        file: p,
+  array.forEach((md) => {
+    const fileContent = fs.readFileSync(md, 'utf-8');
+    const regexLinkNText = /\[(\w.+)\]\((https):\/\/[^ "]\S+\)/g;
+    const LinkNText = fileContent.match(regexLinkNText);
+    if (LinkNText !== null) {
+      LinkNText.forEach((linkNText) => {
+        obj.push({
+          href: linkNText.split('](')[1].slice(0, -1),
+          text: linkNText.split('](')[0].slice(1),
+          file: md,
+        });
       });
-    });
-  }
+    }
+  });
   return obj;
 };
-const mdPrueba = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md';
-// console.log(getLinks(mdPrueba));
 
 const linkStatus = (obj) => {
   const response = [];

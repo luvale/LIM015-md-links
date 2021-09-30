@@ -1,19 +1,12 @@
 const {
-  pathExists, isAbsolute, relToAbs, isDirectory, mdInDir, isMd,
+  pathExists, isAbsolute, relToAbs, getMd,
 } = require('./api');
 
 const mdLinks = (path, options) => new Promise((resolve, reject) => {
   if (pathExists(path)) {
     const absolutePath = isAbsolute(path) ? path : relToAbs(path);
-    const findMd = isDirectory(absolutePath) ? mdInDir(absolutePath) : absolutePath;
-    // console.log(md);
-    /* if (findMd.length !== 0) {
-      console.log(findMd);
-    } else if (isMd(findMd)) {
-      console.log('es md');
-    } else if (findMd.length === 0) {
-      console.log('Template que diga que NO hay archivos MD');
-    } */
+    const a = getMd(absolutePath);
+    console.log(a);
   } else {
     console.log('Template que diga que el PATH NO EXISTE');
   }
