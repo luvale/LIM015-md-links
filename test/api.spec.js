@@ -1,7 +1,7 @@
 const fetch = require('../__mocks__/node-fetch');
 const {
   pathExists, isAbsolute, relToAbs, isDirectory, isMd, getMd, getLinks, linkStatus,
-} = require('../api');
+} = require('../src/api');
 
 describe('pathExists', () => {
   it('Comprueba que la ruta no existe', () => {
@@ -52,7 +52,7 @@ describe('getMd', () => {
     );
   });
   it('Recibe un archivo que NO es md', () => {
-    const unJs = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/api.js';
+    const unJs = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/src/api.js';
     expect(getMd(unJs)).toEqual([]);
   });
   it('Recibe un archivo que SÍ es md', () => {
