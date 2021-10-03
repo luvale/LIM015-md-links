@@ -88,20 +88,20 @@ const objOk = {
   text: 'Markdown',
   file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
 };
-const response = [{
+const response = {
   href: 'https://es.wikipedia.org/wiki/Markdown',
   text: 'Markdown',
   file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
   status: 200,
   message: 'ok',
-}];
-const responseFail = [{
+};
+const responseFail = {
   href: 'https://es.wikipedia.org/wiki/Markdown',
   text: 'Markdown',
   file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
   status: 404,
   message: 'fail',
-}];
+};
 const objFail = {
   href: 'https://es.wikdia.org/wiki/Markdown',
   text: 'Markdown',
