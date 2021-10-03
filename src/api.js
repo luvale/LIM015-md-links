@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 // File System
 const fs = require('fs');
 const path = require('path');
@@ -54,26 +55,23 @@ const getLinks = (array) => {
   return obj;
 };
 
-const linkStatus = (obj) => {
-  const response = [];
-  return fetch(obj.href).then((res) => {
-    // console.log(res);
-    response.push({
-      href: obj.href,
-      text: obj.text,
-      file: obj.file,
-      status: res.status,
-      message: res.status >= 200 && res.status < 300 ? 'ok' : 'fail',
-    });
-    return response;
-  })
-    .catch((error) => console.log('ERROR:', error.message));
-};
-const objPrueba = {
+const linkStatus = (obj) => fetch(obj.href).then((res) => {
+  // console.log(res);
+  const response = {
+    href: obj.href,
+    text: obj.text,
+    file: obj.file,
+    status: res.status,
+    message: res.status >= 200 && res.status < 300 ? 'ok' : 'fail',
+  };
+  return response;
+})
+  .catch((error) => console.log('ERROR:', error.message));
+/* const objPrueba = {
   href: 'https://www.google.com/colores',
   text: 'Colores - link roto',
   file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
-};
+}; */
 
 // console.log(linkStatus(objPrueba).then((response) => console.log(response)));
 
