@@ -1,14 +1,20 @@
 const {
-  pathExists, isAbsolute, relToAbs, getMd, getLinks,
+  pathExists, isAbsolute, relToAbs, getMd, getLinks, linkStatus,
 } = require('./api');
 
-const mdLinks = (path, options) => new Promise((resolve, reject) => {
+const mdLinks = (path, options = { validate: false }) => new Promise((resolve, reject) => {
   if (pathExists(path)) {
     const absolutePath = isAbsolute(path) ? path : relToAbs(path);
     const Mds = getMd(absolutePath);
     const links = getLinks(Mds);
+    // console.log(links);
     if (links.length !== 0) {
-      resolve(links);
+      if (options.validate === true) {
+        const mapDeLinks = links.map((link) => linkStatus(link));
+        resolve(Promise.all(mapDeLinks));
+      } else {
+        resolve(links);
+      }
     } else {
       reject(new Error('Template de que NO HAY LINKS'));
     }
@@ -16,11 +22,6 @@ const mdLinks = (path, options) => new Promise((resolve, reject) => {
     reject(new Error('Template que diga que el PATH NO EXISTE'));
   }
 });
-/* PATHS para probar
-const elReadMe = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/README.md';
-const unJs = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/api.js';
-const sinMd = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaSinMd';
-const conMd = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz';
-*/
-// console.log(mdLinks(elReadMe).then((res) => res).catch((err) => err));
+
+// console.log(mdLinks(conMd).then((res) => res).catch((err) => err));
 module.exports = { mdLinks };
