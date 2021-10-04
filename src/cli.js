@@ -10,8 +10,6 @@ const options = process.argv.slice(3);
 const validate = options.includes('--validate');
 const stats = options.includes('--stats');
 const noPath = userPath === '--help' || userPath === '--validate' || userPath === '--stats';
-// console.log(options);
-// console.log(validate);
 
 if (noPath) {
   console.log(chalk.cyan(help));
