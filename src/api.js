@@ -37,14 +37,14 @@ const getMd = (p) => {
 };
 
 const getLinks = (array) => {
-  const obj = [];
+  const allLinks = [];
   array.forEach((md) => {
     const fileContent = fs.readFileSync(md, 'utf-8');
     const regexLinkNText = /\[(\w.+)\]\((https):\/\/[^ "]\S+\)/g;
     const LinkNText = fileContent.match(regexLinkNText);
     if (LinkNText !== null) {
       LinkNText.forEach((linkNText) => {
-        obj.push({
+        allLinks.push({
           href: linkNText.split('](')[1].slice(0, -1),
           text: linkNText.split('](')[0].slice(1),
           file: md,
@@ -52,7 +52,7 @@ const getLinks = (array) => {
       });
     }
   });
-  return obj;
+  return allLinks;
 };
 
 const linkStatus = (obj) => fetch(obj.href).then((res) => {
