@@ -17,10 +17,10 @@ const mdLinks = (path, options = { validate: false }) => new Promise((resolve, r
         resolve(links);
       }
     } else {
-      reject(new Error(noLinks));
+      reject(noLinks);
     }
   } else {
-    reject(new Error(errorPath));
+    reject(errorPath);
   }
 });
 // console.log(mdLinks(conMd).then((res) => res).catch((err) => err));
