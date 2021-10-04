@@ -23,5 +23,5 @@ const mdLinks = (path, options = { validate: false }) => new Promise((resolve, r
     reject(errorPath);
   }
 });
-// console.log(mdLinks(conMd).then((res) => res).catch((err) => err));
+
 module.exports = { mdLinks };
