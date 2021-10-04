@@ -1,6 +1,7 @@
 const {
   pathExists, isAbsolute, relToAbs, getMd, getLinks, linkStatus,
 } = require('./api');
+const { noLinks, errorPath } = require('./messages');
 
 const mdLinks = (path, options = { validate: false }) => new Promise((resolve, reject) => {
   if (pathExists(path)) {
@@ -16,12 +17,11 @@ const mdLinks = (path, options = { validate: false }) => new Promise((resolve, r
         resolve(links);
       }
     } else {
-      reject(new Error('Template de que NO HAY LINKS'));
+      reject(new Error(noLinks));
     }
   } else {
-    reject(new Error('Template que diga que el PATH NO EXISTE'));
+    reject(new Error(errorPath));
   }
 });
-
 // console.log(mdLinks(conMd).then((res) => res).catch((err) => err));
 module.exports = { mdLinks };
