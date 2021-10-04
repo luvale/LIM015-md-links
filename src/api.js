@@ -56,7 +56,6 @@ const getLinks = (array) => {
 };
 
 const linkStatus = (obj) => fetch(obj.href).then((res) => {
-  // console.log(res);
   const response = {
     href: obj.href,
     text: obj.text,
@@ -66,14 +65,7 @@ const linkStatus = (obj) => fetch(obj.href).then((res) => {
   };
   return response;
 })
-  .catch((error) => console.log('ERROR:', error.message));
-/* const objPrueba = {
-  href: 'https://www.google.com/colores',
-  text: 'Colores - link roto',
-  file: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz/prueba.md',
-}; */
-
-// console.log(linkStatus(objPrueba).then((response) => console.log(response)));
+  .catch((error) => new Error(error.message));
 
 module.exports = {
   pathExists,
