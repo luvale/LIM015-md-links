@@ -43,9 +43,11 @@ if (noPath) {
   console.log(chalk.cyan(help));
 }
 
-/* PATHS para probar
-const elReadMe = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/README.md';
-const unJs = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/src/api.js';
-const sinMd = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaSinMd';
+/* Paths para probar
+Carpeta sin Md: /Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaSinMd
+Carpeta con Mds: /Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz
+Carpeta Vacía: /Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaVacía
+Un Js: /Users/luva/Laboratoria/Md Links/LIM015-md-links/src/api.js
+ReadMe : /Users/luva/Laboratoria/Md Links/LIM015-md-links/README.md
+Path que no existe
 */
-// const conMd = '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz';
