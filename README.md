@@ -56,6 +56,10 @@ Ingresa md-links seguido del path y las opciones como se muestra a continuación
 
 ### Comportamiento
 
+#### Al ingresar `--help` o un comando inválido
+
+![Respuesta a help](./readMeIMGS/help.png)
+
 #### Respuesta sin opciones 
 
 ![Default Response](./readMeIMGS/default.png)
@@ -64,11 +68,11 @@ Ingresa md-links seguido del path y las opciones como se muestra a continuación
 
 ![Respuesta a validate](./readMeIMGS/validate.png)
 
-#### Respuesta a `--stats`
+#### A `--stats`
 
 ![Respuesta a stats](./readMeIMGS/stats.png)
 
-#### Respuesta a `--validate` y `--stats` juntos
+#### A `--validate` y `--stats` juntos
 
 ![Respuesta a validate y stats](./readMeIMGS/2options.png)
 
@@ -78,7 +82,7 @@ Ingresa md-links seguido del path y las opciones como se muestra a continuación
 
 ![Error para cuando la ruta no existe](./readMeIMGS/errorPath.png)
 
-#### Error para cuando no hay links
+#### Cuando no hay links
 
 ![Error para cuando no hay links](./readMeIMGS/noLinks.png)
 
