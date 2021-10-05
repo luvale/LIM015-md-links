@@ -2,13 +2,16 @@ const linkStats = (array) => { // tiene que recibir el array que retorna getLink
   const totalLinks = array.length;
   const links = array.map((link) => link.href);
   const uniqueLinks = new Set(links);
-  return `Total: ${totalLinks}
-Unique: ${uniqueLinks.size}`;
+  return `
+Total: ${totalLinks}
+Unique: ${uniqueLinks.size}
+`;
 };
 
 const brokenLinks = (array) => {
   const linkMessages = array.filter((links) => links.message === 'fail');
-  return `Broken: ${linkMessages.length}`;
+  return `Broken: ${linkMessages.length}
+`;
 };
 
 module.exports = { linkStats, brokenLinks };
