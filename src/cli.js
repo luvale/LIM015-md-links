@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 /* eslint-disable no-console */
 const chalk = require('chalk');
 const { mdLinks } = require('./mdLinks');
@@ -42,10 +43,10 @@ if (noPath) {
 }
 
 /* Paths para probar
-Carpeta sin Md: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaSinMd'
-Carpeta con Mds: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz'
-Carpeta Vacía: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaVacía'
-Un Js: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/src/api.js'
-ReadMe : '/Users/luva/Laboratoria/Md Links/LIM015-md-links/readMeLabo.md'
+Carpeta sin Md: '/Users/luva/Laboratoria/MdLinks/LIM015-md-links/carpetaSinMd'
+Carpeta con Mds: '/Users/luva/Laboratoria/MdLinks/LIM015-md-links/carpetaFeliz'
+Carpeta Vacía: '/Users/luva/Laboratoria/MdLinks/LIM015-md-links/carpetaVacía'
+Un Js: '/Users/luva/Laboratoria/MdLinks/LIM015-md-links/src/api.js'
+ReadMe : '/Users/luva/Laboratoria/MdLinks/LIM015-md-links/readMeLabo.md'
 Path que no existe
 */
