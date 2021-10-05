@@ -10,8 +10,6 @@ const options = process.argv.slice(3);
 const validate = options.includes('--validate');
 const stats = options.includes('--stats');
 const noPath = userPath === '--help' || userPath === '--validate' || userPath === '--stats';
-// console.log(options);
-// console.log(validate);
 
 if (noPath) {
   console.log(chalk.cyan(help));
@@ -44,10 +42,10 @@ if (noPath) {
 }
 
 /* Paths para probar
-Carpeta sin Md: /Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaSinMd
-Carpeta con Mds: /Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz
-Carpeta Vacía: /Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaVacía
-Un Js: /Users/luva/Laboratoria/Md Links/LIM015-md-links/src/api.js
-ReadMe : /Users/luva/Laboratoria/Md Links/LIM015-md-links/README.md
+Carpeta sin Md: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaSinMd'
+Carpeta con Mds: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaFeliz'
+Carpeta Vacía: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/carpetaVacía'
+Un Js: '/Users/luva/Laboratoria/Md Links/LIM015-md-links/src/api.js'
+ReadMe : '/Users/luva/Laboratoria/Md Links/LIM015-md-links/readMeLabo.md'
 Path que no existe
 */
