@@ -37,12 +37,16 @@ const forBrokenLinks = [
 
 describe('linkStats', () => {
   it('Recibe un array con links y devuele el total de links y la cantidad de links únicos', () => {
-    expect(linkStats(forLinkStats)).toBe('Total: 3 \nUnique: 2');
+    expect(linkStats(forLinkStats)).toBe(`
+Total: 3
+Unique: 2
+`); // los saltos de línea son importantes
   });
 });
 
 describe('brokenLinks', () => {
   it('Recibe el array que retorna linksStatus() y retorna que fallaron', () => {
-    expect(brokenLinks(forBrokenLinks)).toBe('Broken: 1');
+    expect(brokenLinks(forBrokenLinks)).toEqual(`Broken: 1
+`);
   });
 });
