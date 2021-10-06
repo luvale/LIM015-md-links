@@ -6,7 +6,6 @@
 - [Flowcharts](#Flowcharts)
 - [Resumen del proyecto](#Resumen-del-proyecto)
 - [Guía de Uso](#Guía-de-Uso)
-- [CLI (Command Line Interface)](#CLI)
 - [Objetivos de aprendizaje](#Objetivos-de-aprendizaje)
 
 ---
