@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const fetch = require('../__mocks__/node-fetch');
 const {
   pathExists, isAbsolute, relToAbs, isDirectory, isMd, getMd, getLinks, linkStatus,
@@ -115,7 +116,8 @@ describe('linkStatus', () => {
       .then((res) => {
       // console.log(res[0].message);
         expect(res).toEqual(response);
-      })})
+      });
+  });
   it('Verifica el link y devuelve el status "404" y el message "fail"', () => {
     fetch.mockResolvedValue({ status: 404 });
     return linkStatus(objOk)
@@ -126,7 +128,7 @@ describe('linkStatus', () => {
   it('Devuelve Error', () => {
     fetch.mockRejectedValue(new Error('ERROR: request to https://es.wikdia.org/wiki/Markdown failed, reason: getaddrinfo ENOTFOUND es.wikdia.org'));
     return linkStatus(objFail).catch((err) => {
-      expect(err).toBe('ERROR: request to https://es.wikdia.org/wiki/Markdown failed, reason: getaddrinfo ENOTFOUND es.wikdia.org')
+      expect(err).toBe('ERROR: request to https://es.wikdia.org/wiki/Markdown failed, reason: getaddrinfo ENOTFOUND es.wikdia.org');
     });
   });
 });

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const { linkStats, brokenLinks } = require('../src/stats');
 
 const forLinkStats = [
