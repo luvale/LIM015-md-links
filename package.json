@@ -11,12 +11,14 @@
     "test": "jest --coverage"
   },
   "description": "## Índice",
-  "main": "index.js",
+  "main": "src/cli.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "chalk": "^4.1.2",
+    "node-fetch": "^2.6.0",
+    "npm": "^7.24.2"
   },
   "repository": {
     "type": "git",
@@ -25,10 +27,16 @@
   "keywords": [
     "jest",
     "javascript",
-    "node"
+    "node",
+    "mdlinks"
   ],
   "author": "luvale",
   "license": "ISC",
+  "bin": {
+    "mdlinks": "src/cli.js",
+    "md-links": "/src/cli.js",
+    "mdLinks": "./src/cli.js"
+  },
   "bugs": {
     "url": "https://github.com/luvale/LIM015-md-links/issues"
   },
