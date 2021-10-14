@@ -37,12 +37,3 @@ if (noPath) {
 } else {
   console.log(chalk.cyan(help));
 }
-
-/* Paths para probar
-Carpeta sin Md: '/Users/luva/Laboratoria/MdLinks/LIM015-md-links/carpetaSinMd'
-Carpeta con Mds: '/Users/luva/Laboratoria/MdLinks/LIM015-md-links/carpetaFeliz'
-Carpeta Vacía: '/Users/luva/Laboratoria/MdLinks/LIM015-md-links/carpetaVacía'
-Un Js: '/Users/luva/Laboratoria/MdLinks/LIM015-md-links/src/api.js'
-ReadMe : '/Users/luva/Laboratoria/MdLinks/LIM015-md-links/readMeLabo.md'
-Path que no existe
-*/
