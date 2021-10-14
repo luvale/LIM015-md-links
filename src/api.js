@@ -18,15 +18,11 @@ const getMd = (p) => {
   let mdArray = [];
   if (isDirectory(p)) {
     const readDir = fs.readdirSync(p);
-    // console.log(readDir);
     for (let i = 0; i < readDir.length; i++) {
       readDir[i] = path.join(p, '/', readDir[i]);
-      // console.log(readDir[i]);
-      // console.log(readDir[i], isMd(readDir[i]));
       if (isMd(readDir[i])) {
         mdArray.push(readDir[i]);
       } else if (isDirectory((readDir[i]))) {
-      // console.log(mdInDir(readDir[i]));
         mdArray = mdArray.concat(getMd(readDir[i]));
       }
     }

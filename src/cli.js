@@ -15,22 +15,18 @@ const noPath = userPath === '--help' || userPath === '--validate' || userPath ==
 if (noPath) {
   console.log(chalk.cyan(help));
 } else if (options.length === 0 && userPath) {
-  // console.log('no hay options');
   mdLinks(userPath, { validate: false })
     .then((resolve) => console.log(resolve))
     .catch((reject) => console.log(chalk.red(reject))); // redBright
 } else if (validate && !stats) { // solo --validate
-  // console.log('solo validate');
   mdLinks(userPath, { validate: true })
     .then((resolve) => console.log(resolve))
     .catch((reject) => console.log(chalk.red(reject)));
 } else if (stats && !validate) { // solo --stats
-  // console.log('solo stats');
   mdLinks(userPath, { validate: false })
     .then((resolve) => console.log(chalk.bgGreen.black(linkStats(resolve))))
     .catch((reject) => console.log(chalk.red(reject)));
 } else if (validate && stats) {
-  // console.log('validate y stats');
   mdLinks(userPath, { validate: true })
     .then((resolve) => {
       const total = console.log(chalk.bgGreen.black(linkStats(resolve)));

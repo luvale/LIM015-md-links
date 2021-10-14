@@ -8,7 +8,6 @@ const mdLinks = (path, options = { validate: false }) => new Promise((resolve, r
     const absolutePath = isAbsolute(path) ? path : relToAbs(path);
     const Mds = getMd(absolutePath);
     const links = getLinks(Mds);
-    // console.log(links);
     if (links.length !== 0) {
       if (options.validate === true) {
         const mapDeLinks = links.map((link) => linkStatus(link));
